@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<div class = "content">
+    <h1>Welcome to <br><span>Stream-rick!</span></h1>
+    <p class="par">Discover the best movies,<br> series, and shows around the world.</p>
+
+    <button class="cn"><a href="{% url 'movies:movie_list' %}">View more movies</a></button>
+
+
+    </div>
+
+    <div class="form">
+        <h2>Login here</h2>
+        <input type="email" name="email" placeholder="Enter email | username">
+        <input type = "password" name = "password" placeholder="Enter password">
+        <button class="btnn"><a href="#">Login</a></button>
+
+        <p class="link">Don't have an account<br>
+            <br>
+        <a href="#">Sign up</a> 
+       
+    
+</div>
+</div>
+
+    
+
+    
+    
+    <!--<h2>Explore Genres</h2>
+    <p>Check out different genres of movies we offer!!</p>
+-->
+    <!--<ul class = "genre_list">
+        {% for genre in genres %}
+        <li><a href="{% url 'movies:genre_detail' genre.pk %}">{{ genre.name }}</a></li>
+        {% empty %}
+        <li>No genres available</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Featured movies</h2>
+    <p>Explore the featured movies in Stream-rick</p>
+
+    <ul class="movie_list">
+
+        {% for movie in movies %}
+        <li><a href="{% url 'movies:movie_detail' movie.pk %}">
+            <img src="{{ movie.image.url }}" alt="{{movie.title}}" class = "movie-thumbnail">
+            <h3>{{ movie.title }}</h3>
+        </a>
+    </li>
+    {% empty %}
+
+    <li>No movies available</li>
+
+    {% endfor %}
+    </ul>
+</div>-->
+
+{% endblock content %}

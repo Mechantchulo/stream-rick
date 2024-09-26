@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Stream-rick {% endblock %}</title>
+    <!-- Link the CSS file -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Stream-rick</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'movies:movie_list' %}">Movies</a></li>
+                    
+                    <!-- Dropdown for Genres -->
+                    <li class="dropdown">
+                        <a href="{% url 'movies:genre_list' %}">Genres</a>
+                        <div class="dropdown-menu">
+
+                            {% for genre in genres %}
+                                <a href="{% url 'movies:genre_detail' genre.pk %}">{{ genre.name }}</a>
+                            {% empty %}
+                                <p>No genres available</p>
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <form method="post" action="{% url 'movies:search_result' %}">
+                    {% csrf_token %}
+                    <input class="srch" type="search" placeholder="Type to search">
+                    <button class="btn">Search</button>
+                </form>
+            </div>
+
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

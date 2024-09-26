@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Genres {% endblock title %}
+
+{% block content %}
+<h1 class="genre-title">Explore Genres</h1>
+
+<ul class = "genre_list">
+    {% for genre in genres %}
+        <li class="genre-item">
+            <a href="{% url 'movies:genre_detail' genre.pk %}">{{ genre.name }}</a>
+        </li>
+    {% empty %}
+        <li class="genre-item">No genres available</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

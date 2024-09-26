@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+
+<h1>Search results for "{{ query }}"</h1>
+
+<ul class="movie_list">
+    {% if movies %}
+        {% for movie in movies %}
+        <li>
+            <a href="{% url 'movies:movie_detail' movie.pk %}">
+                <img src="{% static movie.image.url %}" alt="{{ movie.title }}">
+                <h3>{{ movie.title }}</h3>
+            </a>
+        </li>
+        {% endfor %}
+    {% else %}
+        <li>No movies found matching the search query.</li>
+    {% endif %}
+</ul>
+
+<h2>Genres</h2>
+
+<ul class="genre_list">
+    {% if genres %}
+        {% for genre in genres %}
+            <li>
+                <a href = "{% url 'movies:genre_detail' genre.pk %}">{{ genre.name }}</a></li>
+
+        {% endfor %}
+    
+    {% else %}
+        <li>No genres found matching the search query.</li>
+            
+</ul>
+
+
+
+
+{% endblock %}
